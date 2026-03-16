@@ -1,9 +1,9 @@
 # Assignment 2 — Genetic Algorithm: Knapsack Problem
 ## Observation Report
 
-**Student Name  :** ___________________________  
-**Student ID    :** ___________________________  
-**Date Submitted:** ___________________________  
+**Student Name  :** BENNURI CHARAN TEJA
+**Student ID    :** 2310040035
+**Date Submitted:** 16/03/2026  
 
 ---
 
@@ -23,13 +23,13 @@ Open `ga_knapsack.py` and read through it. Then answer these questions.
 **Q1. What does the `fitness()` function return? Why does an overweight solution score 0?**
 
 ```
-[ YOUR ANSWER — 2 to 3 sentences ]
+The fitness() function measures how good a solution is. It adds the values of all the selected items in the bag. If the total weight goes above 15 kg, the function returns 0 because the solution is not valid. This helps the algorithm prefer solutions that stay within the weight limit.
 ```
 
 **Q2. What does `tournament_select()` do? Why are higher-fitness individuals more likely to be chosen?**
 
 ```
-[ YOUR ANSWER — 2 to 3 sentences ]
+The tournament_select() function chooses parents for the next generation. It randomly picks a few individuals from the population and selects the one with the highest fitness. Because the best one wins the tournament, individuals with higher fitness are more likely to be selected.
 ```
 
 **Q3. Look at the `run_ga()` loop. Find this line:**
@@ -39,7 +39,7 @@ next_gen = [best_chromosome[:]]
 **What is this doing? Why is it important to always keep the best solution?**
 
 ```
-[ YOUR ANSWER — 2 to 3 sentences ]
+This line keeps the best solution from the current generation and copies it to the next generation. This method is called elitism. It is important because it makes sure the best solution is not lost during crossover or mutation.
 ```
 
 ---
@@ -53,23 +53,36 @@ python ga_knapsack.py
 
 **Fill in this table:**
 
-| Metric | Your result |
-|--------|-------------|
-| Number of generations | |
-| Best value at generation 1 | |
-| Final best value | |
-| Total weight of best solution (kg) | |
-| Is solution valid (Yes / No) | |
+| Metric                            | Your result |
+|--------                           |-------------|
+| Number of generations             |    50       |
+| Best value at generation 1        |    60       |
+| Final best value                  |    77       |
+| Total weight of best solution (kg)|  14.4       |
+| Is solution valid (Yes / No)      |    Yes      |
 
 **Copy the printed packing list here:**
 ```
-[ PASTE PACKING LIST OUTPUT HERE ]
+ Best Packing List
+--------------------------------------
+  + Water bottle
+  + First aid kit
+  + Sleeping bag
+  + Torch
+  + Energy bars (x6)
+  + Rain jacket
+  + Map & compass
+  + Cooking stove
+  + Rope (10 m)
+  + Sunscreen
+  + Power bank
+--------------------------------------
 ```
 
 **Look at `plots/experiment_1.png` and describe what you see (2–3 sentences).**  
 *Where does the biggest improvement happen? Does the curve flatten at some point?*
 ```
-[ YOUR OBSERVATION ]
+The graph shows that the best value increases very quickly in the first few generations. The biggest improvement happens in the early generations when the value jumps from about 60 to around 75. After that, the curve becomes flat near 77, which means the algorithm has found a good solution and stops improving.
 ```
 
 ---
@@ -82,21 +95,21 @@ Save plots as `experiment_2a.png`, `experiment_2b.png`, `experiment_2c.png`.
 
 **Results table:**
 
-| mutation_rate | Final best value | Weight (kg) | Valid? | Shape of curve |
-|--------------|-----------------|-------------|--------|----------------|
-| 0.01         |                 |             |        |                |
-| 0.05         |                 |             |        |                |
-| 0.30         |                 |             |        |                |
+| mutation_rate | Final best value | Weight (kg) | Valid? | Shape of curve                         |
+|--------------|-----------------  |-------------|--------|----------------                        |
+| 0.01         |        75         |   14.9      |   Yes  |       improves quickly then plateaus   |
+| 0.05         |        77         |   14.4      |   Yes  |     smooth improvement then stabilizes |
+| 0.30         |        78         |   14.1      |   Yes  |         more fluctuations              |
 
 **Compare the three plots. What happens when mutation is too low? Too high? (3–4 sentences)**  
 *Hint: Too low = no diversity, may get stuck. Too high = random search. What is the sweet spot?*
 ```
-[ YOUR OBSERVATION ]
+When the mutation rate is very low (0.01), the algorithm changes very little and gets stuck at a lower value. With a balanced mutation rate (0.05), the algorithm finds better solutions and reaches a higher value. When the mutation rate is high (0.30), there is more randomness, which sometimes helps find an even better solution but can also make the search less stable.
 ```
 
 **Which mutation_rate gave the best result? Why do you think that is?**
 ```
-[ YOUR ANSWER ]
+The mutation rate of 0.30 gave the best result with a value of 78. The higher mutation created more variety in the population, which helped the algorithm find a slightly better combination of items.
 ```
 
 ---
@@ -105,23 +118,23 @@ Save plots as `experiment_2a.png`, `experiment_2b.png`, `experiment_2c.png`.
 
 **Complete this table with your best result from each experiment:**
 
-| Experiment | Key setting | Final value | Main finding in one sentence |
-|------------|-------------|-------------|------------------------------|
-| 1 — Baseline | mutation_rate = 0.05 | | |
-| 2 — Mutation rate | mutation_rate = ___ | | |
+| Experiment        | Key setting          | Final value | Main finding in one sentence |
+|------------       |-------------         |-------------|------------------------------|
+| 1 — Baseline      | mutation_rate = 0.05 |     77      |The algorithm quickly improves in early generations and converges to a stable high-value solution.|
+| 2 — Mutation rate | mutation_rate = 0.30 |     78      | Higher mutation introduced more diversity and produced the best packing value.|
 
 **In your own words — what is the most important thing you learned about Genetic Algorithms from these experiments? (3–5 sentences)**
 ```
-[ YOUR REFLECTION ]
+From this experiment, I learned how Genetic Algorithms improve solutions step by step over many generations. The algorithm starts with random solutions and improves them using selection, crossover, and mutation. I also learned that mutation rate is very important. If it is too low, the algorithm may get stuck. If it is higher, it can explore more possible solutions.
 ```
 
 ---
 
 ## Submission Checklist
 
-- [ ] Student name and ID filled in
-- [ ] Q1, Q2, Q3 answered
-- [ ] Experiment 1: table filled, packing list pasted, plot observation written
-- [ ] Experiment 2: results table filled (3 rows), observation and answer written
-- [ ] Summary table completed and reflection written
-- [ ] `plots/` contains: `experiment_1.png`, `experiment_2a.png`, `experiment_2b.png`, `experiment_2c.png`
+- [Y] Student name and ID filled in
+- [Y ] Q1, Q2, Q3 answered
+- [Y] Experiment 1: table filled, packing list pasted, plot observation written
+- [Y] Experiment 2: results table filled (3 rows), observation and answer written
+- [Y] Summary table completed and reflection written
+- [Y] `plots/` contains: `experiment_1.png`, `experiment_2a.png`, `experiment_2b.png`, `experiment_2c.png`
